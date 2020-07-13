@@ -15,7 +15,7 @@ JSON_RESPONSE=$(curl "https://fujii_test.microcms.io/api/v1/photo" -H "X-API-KEY
 CONTENTS_LENGTH=$(echo $JSON_RESPONSE | jq ".totalCount")
 for j in $( seq 0 $(($CONTENTS_LENGTH - 1)) ); do
   row=$(echo $JSON_RESPONSE | jq .contents[$j] -r )
-  slug=$(echo $JSON_RESPONSE | jq .contents[$j].slug -r )
+  slug="photo"
   echo $row > ./data/$slug.json
   echo "Download: ./data/$slug.json"
 done

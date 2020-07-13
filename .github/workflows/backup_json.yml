@@ -1,0 +1,20 @@
+name: BackupJson
+
+on:
+  schedule:
+    - cron:  '0 * * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+      - name: Backup Json Files.
+        env:
+          ACCOUNT_ID: ${{ secrets.ACCOUNT_ID }}
+          EMAIL_ADDRESS: ${{ secrets.EMAIL_ADDRESS }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PROJECT_NAME: ${{ secrets.PROJECT_NAME }}
+          MICROCMS_API_KEY: ${{ secrets.MICROCMS_API_KEY }}
+        run: ./backupJson.sh

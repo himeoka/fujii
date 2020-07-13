@@ -11,7 +11,7 @@ echo "Git Setting: Finished"
 # Download Json
 echo "Download Json: Start"
 rm -v ./data/*
-JSON_RESPONSE=$(curl "https://xxxxxxxxxx.microcms.io/api/v1/posts" -H "X-API-KEY: ${MICROCMS_API_KEY}")
+JSON_RESPONSE=$(curl "https://fujii_test.microcms.io/api/v1/photo" -H "X-API-KEY: ${MICROCMS_API_KEY}")
 CONTENTS_LENGTH=$(echo $JSON_RESPONSE | jq ".totalCount")
 for j in $( seq 0 $(($CONTENTS_LENGTH - 1)) ); do
   row=$(echo $JSON_RESPONSE | jq .contents[$j] -r )
